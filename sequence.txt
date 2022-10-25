@@ -1,0 +1,73 @@
+0. "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+1. Cài đặt Vue Cli
+    'npm install -g @vue/cli'
+
+2. Cài vue project
+    'vue create explorer'
+
+3. Chọn vue version (v2 hoặc v3)
+
+4. cd explorer
+
+5. run project explorer
+    'npm run serve'
+
+6. Cài đặt Eslintrc ==> Tạo ra file .eslintrc.js (thiết lập một tệp cấu hình)
+        PS D:\TAI_LIEU\TAI_LIEU_HOC_TAP\LAP_TRINH\VUEJS\PROJECTS\Explorer\explorer> npm init @eslint/config
+        Need to install the following packages:
+        @eslint/create-config
+        Ok to proceed? (y) y
+        √ How would you like to use ESLint? · problems
+        √ What type of modules does your project use? · esm
+        √ Which framework does your project use? · vue
+        √ Does your project use TypeScript? · No / Yes
+        √ Where does your code run? · browser
+        √ What format do you want your config file to be in? · JavaScript
+        The config that you've selected requires the following dependencies:
+
+        eslint-plugin-vue@latest
+        √ Would you like to install them now? · No / Yes
+        √ Which package manager do you want to use? · npm
+        Installing eslint-plugin-vue@latest
+
+        added 1 package, changed 2 packages, and audited 939 packages in 5s
+
+        98 packages are looking for funding
+        run `npm fund` for details
+
+        found 0 vulnerabilities
+        A config file was generated, but the config file itself may not follow your linting rules.
+
+7. Add Icon Package to project
+    npm i --save @fortawesome/vue-fontawesome@latest-3
+
+    # Free icons styles
+    npm i --save @fortawesome/free-solid-svg-icons
+    npm i --save @fortawesome/free-regular-svg-icons
+    npm i --save @fortawesome/free-brands-svg-icons
+
+    Link tra Icon trên Website https://fontawesome.com/search?s=brands
+
+8. Cài SCSS Loader: npm install sass-loader sass webpack --save-dev
+
+9. Event Bus trong vue 3 sử dụng mitt: npm install --save mitt
+
+10. Cài BootstrapVue: npm i --save bootstrap bootstrap-vue-3
+
+11. Cài Vue Axios: npm install --save axios vue-axios
+
+12. Cài Webpack: npm install --save-dev webpack webpack-cli
+
+13. Cài Vue Route cho vue 3 project: npm i vue-router@next
+
+14. Cài SocketIO:   npm install socket.io
+                    npm i socket.io-client
+    Nội dung: Socket tại Client có nhiệm vụ:    + Đăng ký channels
+                                                + Lắng nghe sự kiện từ Server Socket
+                                                + Các sử lý và tương tác với Server Socket sẽ do Server API thực hiện
+
+15. Cài đặt Pinia:  npm install pinia
+
+16. Cài đặt Vuex: npm install vuex@next --save
+
+17. Cài đặt Vue awesome paginate : npm i vue-awesome-paginate

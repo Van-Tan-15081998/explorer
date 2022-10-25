@@ -1,0 +1,22 @@
+.ex-container {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.ex-child-center {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+ex-box-shadow-light {
+  box-shadow: rgba(0, 0, 0, 0.16) 3px 4px 3px 0px;
+}
+ex-box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+  rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
