@@ -36,6 +36,10 @@ export const EventConst = {
             GET_WORD_PAGINATE_SUCCESS: 'Get word paginate success',
             GET_WORD_PAGINATE_ERROR: 'Get word paginate error',
 
+            GET_WORD_BY_ID: 'Get word by id',
+            GET_WORD_BY_ID_SUCCESS: 'Get word by id success',
+            GET_WORD_BY_ID_ERROR: 'Get word by id error',
+
             GET_TYPE_WORD: 'Get type word',
             GET_TYPE_WORD_SUCCESS: 'Get type word success',
             GET_TYPE_WORD_ERROR: 'Get type word error',
@@ -63,6 +67,39 @@ export const EventConst = {
             SAVE_EXAMPLE: 'Save example',
             SAVE_EXAMPLE_SUCCESS: 'Save example success',
             SAVE_EXAMPLE_ERROR: 'Save example error',
+
+            ADD_OR_UPDATE_EXAMPLE_TO_VIE_WORD_MEAN_BY_TYPE_WORD: 'Add or update example to vie word mean by type word',
+            ADD_OR_UPDATE_EXAMPLE_TO_VIE_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Add or update example to vie word mean by type word success',
+            ADD_OR_UPDATE_EXAMPLE_TO_VIE_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Add or update example to vie word mean by type word error',
+
+            DELETE_EXAMPLE_OF_VIE_WORD_MEAN_BY_TYPE_WORD: 'Delete example of vie word mean by type word',
+            DELETE_EXAMPLE_OF_VIE_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Delete example of vie word mean by type word success',
+            DELETE_EXAMPLE_OF_VIE_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Delete example of vie word mean by type word error',
+
+            ADD_OR_UPDATE_EXAMPLE_TO_ENG_WORD_MEAN_BY_TYPE_WORD: 'Add or update example to eng word mean by type word',
+            ADD_OR_UPDATE_EXAMPLE_TO_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Add or update example to eng word mean by type word success',
+            ADD_OR_UPDATE_EXAMPLE_TO_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Add or update example to eng word mean by type word error',
+
+            DELETE_EXAMPLE_OF_ENG_WORD_MEAN_BY_TYPE_WORD: 'Delete example of eng word mean by type word',
+            DELETE_EXAMPLE_OF_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Delete example of eng word mean by type word success',
+            DELETE_EXAMPLE_OF_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Delete example of eng word mean by type word error',
+
+            UPDATE_VIE_WORD_MEAN_BY_TYPE_WORD: 'Update vie word mean by type word',
+            UPDATE_VIE_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Update vie word mean by type word success',
+            UPDATE_VIE_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Update vie word mean by type word error',
+
+            DELETE_VIE_WORD_MEAN_BY_TYPE_WORD: 'Delete vie word mean by type word',
+            DELETE_VIE_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Delete vie word mean by type word success',
+            DELETE_VIE_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Delete vie word mean by type word error',
+
+            UPDATE_ENG_WORD_MEAN_BY_TYPE_WORD: 'Update eng word mean by type word',
+            UPDATE_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Update eng word mean by type word success',
+            UPDATE_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Update eng word mean by type word error',
+
+            DELETE_ENG_WORD_MEAN_BY_TYPE_WORD: 'Delete eng word mean by type word',
+            DELETE_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Delete eng word mean by type word success',
+            DELETE_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Delete eng word mean by type word error',
+
         },
 
         PRONOUNCE: {

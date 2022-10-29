@@ -230,7 +230,7 @@ export default {
     openModalUpdateWord() {
       this.exEventBus.emit(
           this.exAppSetting.event.MODAL.WORD.OPEN_MODAL_UPDATE_WORD,
-          {id: this.word.id}
+          {wordId: this.word.id}
       );
     },
   },

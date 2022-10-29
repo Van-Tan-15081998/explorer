@@ -107,7 +107,7 @@
 			this.exEventBus.on(
 				this.exAppSetting.event.MODAL.WORD.OPEN_MODAL_UPDATE_WORD,
 				(data) => {
-					this.openModalUpdateWord(data.id);
+					this.openModalUpdateWord(data.wordId);
 				}
 			);
 			this.exEventBus.on(
@@ -177,18 +177,11 @@
 					{ page: page }
 				);
 			},
-			openModalUpdateWord(id) {
-				this.listWord.forEach((element) => {
-					if (element.id === id) {
-						let wordTemp = element;
-
-						// Truyền dữ liệu word cho modal update word
-						this.exEventBus.emit(
-							this.exAppSetting.event.PASS_DATA.WORD.UPDATE_WORD,
-							wordTemp
-						);
-					}
-				});
+			openModalUpdateWord(wordId) {
+				this.exEventBus.emit(
+					this.exAppSetting.event.PASS_DATA.WORD.UPDATE_WORD,
+						wordId
+				);
 				this.showModalUpdateWord = true;
 			},
       updatePronounce(data) {

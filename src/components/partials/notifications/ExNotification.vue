@@ -1,9 +1,9 @@
 <template>
 	<div
-			@click="cancel"
 			v-if="notification"
 			class="list_notification">
 		<div
+				@click="cancel"
 				class="notification-block"
 				:class="notification['state']"
 		>

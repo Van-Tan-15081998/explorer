@@ -196,6 +196,33 @@
 					}
 			);
 
+			// Get word by id
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.GET_WORD_BY_ID,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.GET_WORD_BY_ID,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.GET_WORD_BY_ID_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.GET_WORD_BY_ID_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
 			// Save Word
 			this.exEventBus.on(
 					this.exAppSetting.event.API.WORD.SAVE_WORD,
@@ -351,6 +378,222 @@
 										this.exEventBus.emit(
 												this.exAppSetting.event.API.WORD
 														.SAVE_EXAMPLE_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
+			// Add or update example to vie word mean by type word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.ADD_OR_UPDATE_EXAMPLE_TO_VIE_WORD_MEAN_BY_TYPE_WORD,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.ADD_OR_UPDATE_EXAMPLE_TO_VIE_WORD_MEAN_BY_TYPE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.ADD_OR_UPDATE_EXAMPLE_TO_VIE_WORD_MEAN_BY_TYPE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.ADD_OR_UPDATE_EXAMPLE_TO_VIE_WORD_MEAN_BY_TYPE_WORD_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
+			// Add or update example to eng word mean by type word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.ADD_OR_UPDATE_EXAMPLE_TO_ENG_WORD_MEAN_BY_TYPE_WORD,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.ADD_OR_UPDATE_EXAMPLE_TO_ENG_WORD_MEAN_BY_TYPE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.ADD_OR_UPDATE_EXAMPLE_TO_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.ADD_OR_UPDATE_EXAMPLE_TO_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
+			// Delete example of vie word mean by type word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.DELETE_EXAMPLE_OF_VIE_WORD_MEAN_BY_TYPE_WORD,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.DELETE_EXAMPLE_OF_VIE_WORD_MEAN_BY_TYPE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.DELETE_EXAMPLE_OF_VIE_WORD_MEAN_BY_TYPE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.DELETE_EXAMPLE_OF_VIE_WORD_MEAN_BY_TYPE_WORD_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
+			// Delete example of eng word mean by type word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.DELETE_EXAMPLE_OF_ENG_WORD_MEAN_BY_TYPE_WORD,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.DELETE_EXAMPLE_OF_ENG_WORD_MEAN_BY_TYPE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.DELETE_EXAMPLE_OF_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.DELETE_EXAMPLE_OF_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
+			// Update vie word mean by type word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.UPDATE_VIE_WORD_MEAN_BY_TYPE_WORD,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.UPDATE_VIE_WORD_MEAN_BY_TYPE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.UPDATE_VIE_WORD_MEAN_BY_TYPE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.UPDATE_VIE_WORD_MEAN_BY_TYPE_WORD_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
+			// Update eng word mean by type word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.UPDATE_ENG_WORD_MEAN_BY_TYPE_WORD,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.UPDATE_ENG_WORD_MEAN_BY_TYPE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.UPDATE_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.UPDATE_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
+			// Delete vie word mean by type word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.DELETE_VIE_WORD_MEAN_BY_TYPE_WORD,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.DELETE_VIE_WORD_MEAN_BY_TYPE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.DELETE_VIE_WORD_MEAN_BY_TYPE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.DELETE_VIE_WORD_MEAN_BY_TYPE_WORD_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
+			// Delete eng word mean by type word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.DELETE_ENG_WORD_MEAN_BY_TYPE_WORD,
+					(data) => {
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.DELETE_ENG_WORD_MEAN_BY_TYPE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.DELETE_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.DELETE_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR,
 												response
 										);
 									}

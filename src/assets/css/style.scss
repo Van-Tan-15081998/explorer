@@ -341,7 +341,7 @@ input, textarea {
 			position: absolute;
 			right: 0px;
 			top: 0px;
-			width: 40px;
+			width: 50px;
 			height: 40px;
 			display: flex;
 			justify-content: center;
@@ -368,10 +368,26 @@ input, textarea {
 					&.delete {
 						display: block;
 						color: orange !important;
+						margin-right: 5px;
 
 						&:hover {
 							cursor: pointer;
 							color: red !important;
+						}
+
+						&:active {
+							transform: scale(0.9);
+						}
+					}
+
+					&.add {
+						display: block;
+						color: greenyellow !important;
+						margin-right: 5px;
+
+						&:hover {
+							cursor: pointer;
+							color: green !important;
 						}
 
 						&:active {
@@ -391,9 +407,25 @@ input, textarea {
 					display: block;
 					color: red;
 
+					&.add {
+						display: block;
+						color: greenyellow !important;
+						margin-right: 5px;
+
+						&:hover {
+							cursor: pointer;
+							color: green !important;
+						}
+
+						&:active {
+							transform: scale(0.9);
+						}
+					}
+
 					&.delete {
 						display: block;
 						color: orange !important;
+						margin-right: 5px;
 
 						&:hover {
 							cursor: pointer;
