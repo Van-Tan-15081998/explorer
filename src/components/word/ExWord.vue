@@ -14,7 +14,7 @@
         />
 				<div class="detail-content core_child_standard_sequence">
 					<div v-for="item in listWord" :key="item">
-						<ExWordItemBlock :word="item" />
+						<ExWordItemBlock :word="item" :type_word="defaultData.typeWord"/>
 					</div>
 					<div class="paginate-block core_child_center">
 						<vue-awesome-paginate
@@ -77,7 +77,10 @@
 				isExpanded: false,
 				listWord: [],
 				showModalUpdateWord: false,
-        showModalAddWord: false
+        showModalAddWord: false,
+				defaultData: {
+					typeWord: []
+				},
 			};
 		},
 		components: {
@@ -114,6 +117,7 @@
 				this.exAppSetting.event.MODAL.WORD.CLOSE_MODAL_UPDATE_WORD,
 				() => {
 					this.showModalUpdateWord = false;
+
 				}
 			);
       this.exEventBus.on(
@@ -123,48 +127,24 @@
           }
       );
 
-      // this.exEventBus.on(
-      //     this.exAppSetting.event.API.PRONOUNCE.SAVE_PRONOUNCE_SUCCESS,
-      //     (data) => {
-      //       console.log(data)
-      //       this.updatePronounce(data)
-      //       this.exEventBus.emit(
-      //           this.exAppSetting.event.NOTIFICATION.OPEN_NOTIFICATION,
-      //           { state: "success", message: "Cập nhật phát âm thành công" }
-      //       );
-      //     }
-      // );
-      // this.exEventBus.on(
-      //     this.exAppSetting.event.API.PRONOUNCE.SAVE_PRONOUNCE_ERROR,
-      //     (data) => {
-      //       console.log(data)
-      //       this.exEventBus.emit(
-      //           this.exAppSetting.event.NOTIFICATION.OPEN_NOTIFICATION,
-      //           { state: "error", message: "Cập nhật phát âm thất bại" }
-      //       );
-      //     }
-      // );
-      // this.exEventBus.on(
-      //     this.exAppSetting.event.API.WORD_MEAN.SAVE_WORD_MEAN_SUCCESS,
-      //     (data) => {
-      //       console.log(data)
-      //       this.updateWordMean(data)
-      //       this.exEventBus.emit(
-      //           this.exAppSetting.event.NOTIFICATION.OPEN_NOTIFICATION,
-      //           { state: "success", message: "Cập nhật nghĩa từ vựng thành công" }
-      //       );
-      //     }
-      // );
-      // this.exEventBus.on(
-      //     this.exAppSetting.event.API.WORD_MEAN.SAVE_WORD_MEAN_ERROR,
-      //     (data) => {
-      //       console.log(data)
-      //       this.exEventBus.emit(
-      //           this.exAppSetting.event.NOTIFICATION.OPEN_NOTIFICATION,
-      //           { state: "error", message: "Cập nhật nghĩa từ vựng thất bại" }
-      //       );
-      //     }
-      // );
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD
+							.GET_TYPE_WORD_SUCCESS,
+					(data) => {
+						this.defaultData.typeWord = data
+					}
+			);
+
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD
+							.GET_TYPE_WORD_ERROR,
+					() => {
+						this.exEventBus.emit(
+								this.exAppSetting.event.NOTIFICATION.OPEN_NOTIFICATION,
+								{ state: "error", message: "Thất bại" }
+						);
+					}
+			);
 		},
 		methods: {
       openModalAddWord () {
@@ -210,7 +190,7 @@
 <style scoped lang="scss">
 	.detail-content {
 		position: relative;
-		padding: 20px;
+		padding: 10px;
 
 		.paginate-block {
 			width: calc(100% - 300px);

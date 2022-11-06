@@ -2,6 +2,7 @@
 	<div>
 		<ExNavFrame />
 		<div class="ex-content-block">
+			<div class="background"></div>
 			<div class="ex-main-content-detail">
 				<router-view></router-view>
 			</div>
@@ -20,6 +21,7 @@
 		data() {
 			return {
 				contentScreen: "",
+				backgroundAmount: 20
 			};
 		},
 		created() {},
@@ -33,14 +35,26 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/assets/css/colors.scss";
+	@import "../../../../assets/css/colors.scss";
 	.ex-content-block {
 		position: absolute;
 		top: 55px;
 		left: 240px;
 		height: calc(100% - 55px);
 		width: calc(100% - 240px);
+		overflow: hidden;
 		background-color: #1F1F1F;
+	}
+
+	.background {
+		//position: absolute;
+		//width: 100%;
+		//height: 100%;
+		//background-color: #1F1F1F;
+
+		//background-image: url("../../../../assets/img/background-optimized-2.svg");
+		//background-repeat: repeat;
+		//background-size: 350px;
 	}
 
 	.ex-main-content-detail {

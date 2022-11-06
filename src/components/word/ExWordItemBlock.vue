@@ -17,7 +17,7 @@
             </div>
             <div
                 class="tab_item core_child_center"
-                title="Nghĩa Theo Từ Loại"
+                title="Nghĩa Theo Từ Loại [Vie]"
                 @click="openTab(2)"
                 :class="openTabIndex === 2 ? 'opening' : ''"
             >
@@ -27,9 +27,19 @@
             </div>
 						<div
 								class="tab_item core_child_center"
-								title="Nghĩa Tiếng Anh"
+								title="Nghĩa Theo Từ Loại [Eng]"
 								@click="openTab(3)"
 								:class="openTabIndex === 3 ? 'opening' : ''"
+						>
+							<font-awesome-icon
+									class="tab_icon"
+									icon="fa-solid fa-diagram-project" />
+						</div>
+						<div
+								class="tab_item core_child_center"
+								title="Nghĩa Tiếng Anh"
+								@click="openTab(4)"
+								:class="openTabIndex === 4 ? 'opening' : ''"
 						>
 							<font-awesome-icon
 									class="tab_icon"
@@ -38,8 +48,8 @@
 						<div
 								class="tab_item core_child_center"
 								title="Ví dụ"
-								@click="openTab(4)"
-								:class="openTabIndex === 4 ? 'opening' : ''"
+								@click="openTab(5)"
+								:class="openTabIndex === 5 ? 'opening' : ''"
 						>
 							<font-awesome-icon
 									class="tab_icon"
@@ -49,8 +59,8 @@
             <div
                 class="tab_item core_child_center"
                 title="Ngữ cảnh"
-                @click="openTab(5)"
-                :class="openTabIndex === 5 ? 'opening' : ''"
+                @click="openTab(6)"
+                :class="openTabIndex === 6 ? 'opening' : ''"
             >
               <font-awesome-icon
                   class="tab_icon"
@@ -60,8 +70,8 @@
             <div
                 class="tab_item core_child_center"
                 title="Từ đồng nghĩa"
-                @click="openTab(6)"
-                :class="openTabIndex === 6 ? 'opening' : ''"
+                @click="openTab(7)"
+                :class="openTabIndex === 7 ? 'opening' : ''"
             >
               <font-awesome-icon
                   class="tab_icon"
@@ -71,8 +81,8 @@
             <div
                 class="tab_item core_child_center"
                 title="Kết hợp từ"
-                @click="openTab(7)"
-                :class="openTabIndex === 7 ? 'opening' : ''"
+                @click="openTab(8)"
+                :class="openTabIndex === 8 ? 'opening' : ''"
             >
               <font-awesome-icon
                   class="tab_icon"
@@ -82,8 +92,8 @@
             <div
                 class="tab_item core_child_center"
                 title="Họ từ"
-                @click="openTab(8)"
-                :class="openTabIndex === 8 ? 'opening' : ''"
+                @click="openTab(9)"
+                :class="openTabIndex === 9 ? 'opening' : ''"
             >
               <font-awesome-icon
                   class="tab_icon"
@@ -94,7 +104,7 @@
                 class="tab_item core_child_center"
                 title="Cập nhật"
                 @click="openModalUpdateWord"
-                :class="openTabIndex === 9 ? 'opening' : ''"
+                :class="openTabIndex === 10 ? 'opening' : ''"
             >
               <font-awesome-icon
                   class="tab_icon"
@@ -116,7 +126,7 @@
       <div class="word_content_block">
         <div class="word_type_word">
 					<div class="word">
-						<p>{{ word.word }}</p>
+						<p>{{ wordData.word.word }}</p>
 					</div>
 					<div class="type_word">
 						adj
@@ -130,50 +140,111 @@
 									icon="fa-solid fa-star"
 							/>
 							<b>
-								3
+								{{wordData.word.popularity}}
 							</b>
 						</div>
 					</div>
 				</div>
         <div class="pronounce">
           <div class="pronounce_us">
-            <b>US:__</b>
-            <p>{{ word.pronounce !== null ? word.pronounce.us : '' }}</p>
+            <b class="title_pronounce">US: </b>
+            <p>{{ wordData.word.us !== null ? wordData.word.us : '' }}</p>
           </div>
           <div class="pronounce_uk">
-            <b>UK:__</b>
-            <p>{{ word.pronounce !== null ? word.pronounce.uk : '' }}</p>
+            <b class="title_pronounce">UK: </b>
+            <p>{{ wordData.word.uk !== null ? wordData.word.uk : '' }}</p>
           </div>
         </div>
       </div>
       <div class="word_content">
         <div class="content_item" v-if="openTabIndex === 1">
-          <label class="word_mean">Nghĩa thông dụng</label>
-
+          <label class="word_mean_label">Nghĩa thông dụng</label>
+					<p class="word_mean">
+						{{wordData.wordMeanPopularity.mean}}
+					</p>
         </div>
         <div class="content_item" v-if="openTabIndex === 2">
-          <h4>Nghĩa Theo Từ Loại
-          </h4>
+          <div
+							v-for="item in wordData.vie_word_mean_by_type_word"
+							:key="item['id']"
+							class="word_mean_by_type_word">
+							<p class="type_word">{{ getVieTypeWordName(item['type_word_id'])}}</p>
+							<div class="mean_example">
+								<div class="mean">
+									{{ item['mean'] }}
+								</div>
+								<div class="examples">
+									<div
+											v-for="i in item['examples']"
+											:key="i['id']"
+											class="example_item" >
+										{{ i['example'] }}
+									</div>
+								</div>
+							</div>
+					</div>
         </div>
 				<div class="content_item" v-if="openTabIndex === 3">
-					<h4>Nghĩa Tiếng Anh</h4>
+					<div
+							v-for="item in wordData.eng_word_mean_by_type_word"
+							:key="item['id']"
+							class="word_mean_by_type_word">
+						<p class="type_word">{{ getEngTypeWordName(item['type_word_id'])}}</p>
+						<div class="mean_example">
+							<div class="mean">
+								{{ item['mean'] }}
+							</div>
+							<div class="examples">
+								<div
+										v-for="i in item['examples']"
+										:key="i['id']"
+										class="example_item" >
+									{{ i['example'] }}
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="content_item" v-if="openTabIndex === 4">
-					<h4>Ví dụ</h4>
+					<div class="word_mean_by_type_word">
+						<p class="type_word">{{ getEngTypeWordName(wordData.engWordMean['type_word_id'])}}</p>
+						<div class="mean_example">
+							<div class="mean">
+								{{ wordData.engWordMean['mean'] }}
+							</div>
+							<div class="examples">
+								<div class="example_item" >
+									{{ wordData.engWordMean['example'] }}
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-        <div class="content_item" v-if="openTabIndex === 5">
+				<div class="content_item" v-if="openTabIndex === 5">
+					<div class="word_examples">
+						<div class="examples">
+							<div
+									v-for="item in wordData.examples"
+									:key="item['id']"
+									class="example_item" >
+								{{ item['example'] }}
+							</div>
+						</div>
+					</div>
+				</div>
+        <div class="content_item" v-if="openTabIndex === 6">
           <h4>Ngữ cảnh</h4>
         </div>
-        <div class="content_item" v-if="openTabIndex === 6">
+        <div class="content_item" v-if="openTabIndex === 7">
           <h4>Từ đồng nghĩa</h4>
         </div>
-        <div class="content_item" v-if="openTabIndex === 7">
+        <div class="content_item" v-if="openTabIndex === 8">
           <h4>Kết hợp từ</h4>
         </div>
-        <div class="content_item" v-if="openTabIndex === 8">
+        <div class="content_item" v-if="openTabIndex === 9">
           <h4>Họ từ</h4>
         </div>
-        <div class="content_item" v-if="openTabIndex === 9">
+        <div class="content_item" v-if="openTabIndex === 10">
           <h4>More</h4>
         </div>
       </div>
@@ -186,16 +257,81 @@ export default {
   name: "ExWordItemBlock",
   props: {
     word: Object,
+		type_word: Array
   },
   data() {
     return {
       openTabIndex: 1,
       isExpanded: false,
+
+			wordData: {
+				vie_word_mean_by_type_word: [],
+
+				eng_word_mean_by_type_word: [],
+
+				word: {
+					id:null,
+					word: null,
+					popularity: 0,
+					us: null,
+					uk: null
+				},
+
+				examples: [],
+
+				engWordMean: {
+					id: null,
+					word_id: null,
+					mean: null,
+					example: null,
+					type_word_id: null
+				},
+
+				wordMeanPopularity: {
+					mean: null,
+					is_popularity: 1,
+					word_id: null
+				},
+			},
     };
   },
   created() {
+		console.log(111, this.type_word)
 
+		if (this.word) {
+			if(this.word['word']) {
+				this.wordData.word.word = this.word['word']
+			}
+			if(this.word['popularity']) {
+				this.wordData.word.popularity = this.word['popularity']
+			}
+			if(this.word['pronounce']['us']) {
+				this.wordData.word.us = this.word['pronounce']['us']
+			}
+			if(this.word['pronounce']['uk']) {
+				this.wordData.word.uk = this.word['pronounce']['uk']
+			}
+			if(this.word['examples']) {
+				this.wordData.examples = this.word['examples']
+			}
+			if(this.word['eng_word_mean']) {
+				this.wordData.engWordMean = this.word['eng_word_mean']
+			}
+			if(this.word['word_mean_popularity']) {
+				this.wordData.wordMeanPopularity = this.word['word_mean_popularity']
+			}
+			if(this.word['vie_word_mean_by_type_word']) {
+				this.wordData.vie_word_mean_by_type_word = this.word['vie_word_mean_by_type_word']
+			}
+			if(this.word['eng_word_mean_by_type_word']) {
+				this.wordData.eng_word_mean_by_type_word = this.word['eng_word_mean_by_type_word']
+			}
+		}
   },
+
+	computed: {
+
+	},
 
   methods: {
     openTab(index) {
@@ -224,6 +360,9 @@ export default {
         case 8:
           this.openTabIndex = 8;
           break;
+				case 9:
+					this.openTabIndex = 9;
+					break;
       }
       console.log(this.openTabIndex);
     },
@@ -233,6 +372,26 @@ export default {
           {wordId: this.word.id}
       );
     },
+
+		getVieTypeWordName (id) {
+			let typeWord = this.type_word.find((element) => {
+				return element['id'] === id
+			})
+			if(typeWord) {
+				return typeWord['vie_description']
+			}
+			return 'default'
+		},
+
+		getEngTypeWordName (id) {
+			let typeWord = this.type_word.find((element) => {
+				return element['id'] === id
+			})
+			if(typeWord) {
+				return typeWord['eng_description']
+			}
+			return 'default'
+		}
   },
 }
 </script>
@@ -240,7 +399,7 @@ export default {
 <style scoped lang="scss">
 .word_item_block {
   position: relative;
-  width: 500px;
+  width: 510px;
   height: 300px;
   overflow: hidden;
 	box-shadow: #54E9B7 10px 10px 0px -2px;
@@ -270,7 +429,7 @@ export default {
         display: inline-flex;
 
         .tab_item {
-          width: calc(500px * 0.1);
+          width: calc(510px * 0.0909090909090909);
           height: 50px;
           cursor: pointer;
           user-select: none;
@@ -320,7 +479,7 @@ export default {
     left: 0px;
     padding: 10px;
 		//background-color: #4F4F4F; // OK
-		background-color: #FFFFFF;
+		background-color: lightgrey;
 
 		.word_type_word {
 			position: relative;
@@ -398,7 +557,12 @@ export default {
         font-size: 16px;
         font-weight: 400;
 
+				.title_pronounce {
+					margin-right: 15px;
+				}
+
         p {
+					font-size: 16px;
           margin: 0px !important;
           font-style: italic;
         }
@@ -413,17 +577,86 @@ export default {
     bottom: 0px;
     left: 0px;
     border-top: 1px solid #6d757d;
-		background-color: #FFFFFF;
+		background-color: lightgrey;
 
     .content_item {
       width: 100%;
       height: 100%;
       padding: 10px;
 
-      .word_mean {
-        font-size: 28px;
-        color: limegreen;
+			overflow-y: scroll;
+
+      .word_mean_label {
+        font-size: 16px;
+        color: #00CF00;
       }
+
+			.word_mean {
+				font-size: 30px;
+				font-weight: 500;
+				color: #314636;
+				margin-top: 5px;
+			}
+
+			.word_mean_by_type_word {
+				width: 100%;
+
+				.type_word {
+					font-size: 20px;
+					font-weight: bold;
+					margin: 0 !important;
+					color: #EB6700;
+				}
+
+				.mean_example {
+					background-color: #C2FA00;
+					border: 1px solid;
+					border-radius: 5px;
+					padding: 15px;
+					margin: 5px 5px 5px 20px;
+					.mean {
+						font-size: 22px;
+						font-weight: 500;
+					}
+
+					.examples {
+						margin-top: 5px;
+						.example_item {
+							font-size: 18px;
+							font-weight: 400;
+							background-color: white;
+							color: #3C3C3C;
+							border-radius: 2px;
+							width: fit-content;
+							margin: 2px;
+							padding: 2px 5px 2px 5px;
+						}
+					}
+				}
+			}
+
+			.word_examples {
+				width: 100%;
+
+				.examples {
+					background-color: #C2FA00;
+					border: 1px solid;
+					border-radius: 5px;
+					padding: 15px;
+					margin: 5px 5px 5px 5px;
+
+					.example_item {
+						font-size: 18px;
+						font-weight: 400;
+						background-color: white;
+						color: #3C3C3C;
+						border-radius: 2px;
+						width: fit-content;
+						margin: 4px;
+						padding: 2px 5px 2px 5px;
+					}
+				}
+			}
     }
   }
 }

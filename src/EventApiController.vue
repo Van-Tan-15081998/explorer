@@ -601,6 +601,34 @@
 					}
 			);
 
+			// Update Word
+			this.exEventBus.on(
+					this.exAppSetting.event.API.WORD.UPDATE_WORD,
+					(data) => {
+						console.log('đây nha')
+						this.exAppUtils.apiSerivce
+								.post(
+										this.exAppSetting.api.WORD.UPDATE_WORD,
+										data
+								)
+								.then((response) => {
+									if (response['error_code'] === 0) {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.UPDATE_WORD_SUCCESS,
+												response.data
+										);
+									} else {
+										this.exEventBus.emit(
+												this.exAppSetting.event.API.WORD
+														.UPDATE_WORD_ERROR,
+												response
+										);
+									}
+								});
+					}
+			);
+
 
 		},
 	};

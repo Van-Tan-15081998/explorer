@@ -39,6 +39,8 @@ export const ApiConst = {
         DELETE_VIE_WORD_MEAN_BY_TYPE_WORD: '/api/v1/word/delete-vie-word-mean-by-type-word',
         UPDATE_ENG_WORD_MEAN_BY_TYPE_WORD: '/api/v1/word/update-eng-word-mean-by-type-word',
         DELETE_ENG_WORD_MEAN_BY_TYPE_WORD: '/api/v1/word/delete-eng-word-mean-by-type-word',
+
+        UPDATE_WORD: '/api/v1/word/update-word'
     },
 
     PRONOUNCE: {

@@ -72,6 +72,10 @@
 						state: data.state,
 						message: data.message,
 					}
+					let app = this
+					setTimeout(()=>{
+						app.notification = null
+					}, 1000)
 				}
 			)
 		},

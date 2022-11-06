@@ -579,7 +579,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/css/colors.scss";
+@import "../../../../assets/css/colors.scss";
 
 .ex-sidebar-block {
   position: absolute;
@@ -589,8 +589,15 @@ export default {
   width: 240px;
   border-right: 1px solid rgba(84, 84, 84, 48);
 
-  background-color: $dark;
+  //background-color: $dark;
   overflow-y: scroll;
+
+	background-color: #1F1F1F;
+
+	background-image: url("../../../../assets/img/background-optimized-2.svg");
+	background-repeat: repeat;
+	background-size: 350px;
+	color: lightgrey;
 
   .ex-sub-menu-toggle-icon {
     &:hover {

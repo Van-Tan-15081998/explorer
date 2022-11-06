@@ -73,7 +73,7 @@
 								<div class="core_child_space_between edit-word">
 
 									<div class="input_wrapper">
-										<div class="label_form">Từ vựng</div>
+										<div class="label_form">Từ vựng [{{ formData.word.word }}]</div>
 										<div class="input_validator" :class="getError('word') ? 'error' : ''">
 											<input
 													v-model="formData.word.word"
@@ -152,7 +152,7 @@
 											:left-icon="'fa-solid fa-floppy-disk'"
 											:text="'Lưu'"
 											class="base-decoration"
-											@click="saveWord"
+											@click="updateWord"
 									/>
 								</div>
 
@@ -743,6 +743,7 @@ export default {
 				eng_word_mean_by_type_words: [],
 
 				word: {
+					id:null,
 					word: null,
 					popularity: 0,
 					us: null,
@@ -803,6 +804,10 @@ export default {
 
 					if(data['vie_word_mean_by_type_word']) { this.formData.vie_word_mean_by_type_words_old = data['vie_word_mean_by_type_word']}
 					if(data['eng_word_mean_by_type_word']) { this.formData.eng_word_mean_by_type_words_old = data['eng_word_mean_by_type_word']}
+
+					if(data['id']) {
+						this.formData.word.id = data['id']
+					}
 
 					if(data['word']) {
 						this.formData.word.word = data['word']
@@ -1249,6 +1254,32 @@ export default {
 				}
 		);
 
+		this.exEventBus.on(
+				this.exAppSetting.event.API.WORD
+						.UPDATE_WORD_SUCCESS,
+				() => {
+					this.exEventBus.emit(
+							this.exAppSetting.event.API.WORD.GET_WORD_BY_ID,
+							{id: this.wordId}
+					);
+					this.exEventBus.emit(
+							this.exAppSetting.event.NOTIFICATION.OPEN_NOTIFICATION,
+							{ state: "success", message: "Thành công" }
+					);
+				}
+		);
+		this.exEventBus.on(
+				this.exAppSetting.event.API.WORD
+						.UPDATE_WORD_ERROR,
+				(data) => {
+					this.setFormError(data['error_msg'])
+					this.exEventBus.emit(
+							this.exAppSetting.event.NOTIFICATION.OPEN_NOTIFICATION,
+							{ state: "error", message: "Thất bại" }
+					);
+				}
+		);
+
 	},
 	methods: {
 		resetAllFormData () {
@@ -1327,6 +1358,19 @@ export default {
 					this.exAppSetting.event.API.WORD.SAVE_WORD,
 					// this.formData.word
 					{
+						word: this.formData.word.word ? String(this.formData.word.word).trim() : null,
+						popularity: this.formData.word.popularity,
+						us: this.formData.word.us ? String(this.formData.word.us).trim() : null,
+						uk: this.formData.word.uk ? String(this.formData.word.uk).trim() : null,
+					}
+			);
+		},
+
+		updateWord () {
+			this.exEventBus.emit(
+					this.exAppSetting.event.API.WORD.UPDATE_WORD,
+					{
+						id: this.formData.word.id ? this.formData.word.id : null,
 						word: this.formData.word.word ? String(this.formData.word.word).trim() : null,
 						popularity: this.formData.word.popularity,
 						us: this.formData.word.us ? String(this.formData.word.us).trim() : null,
@@ -1802,7 +1846,8 @@ export default {
 }
 
 .modal-body {
-	padding: 0px !important
+	padding: 0px !important;
+	background-color: #4B5C4F;
 }
 
 .modal-default-button {

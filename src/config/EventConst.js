@@ -100,6 +100,9 @@ export const EventConst = {
             DELETE_ENG_WORD_MEAN_BY_TYPE_WORD_SUCCESS: 'Delete eng word mean by type word success',
             DELETE_ENG_WORD_MEAN_BY_TYPE_WORD_ERROR: 'Delete eng word mean by type word error',
 
+            UPDATE_WORD: 'Update word',
+            UPDATE_WORD_SUCCESS: 'Update word success',
+            UPDATE_WORD_ERROR: 'Update word error',
         },
 
         PRONOUNCE: {
@@ -139,7 +142,7 @@ export const EventConst = {
             CONFIRM_DELETE_PRODUCT: 'Confirm delete product',
         },
         WORD: {
-            UPDATE_WORD: 'Update word'
+            UPDATE_WORD: 'Pass data to update word'
         }
     },
 
