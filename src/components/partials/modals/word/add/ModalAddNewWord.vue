@@ -1263,7 +1263,7 @@ export default {
 .modal-container {
 	width: 900px;
 	margin: 0px auto;
-	background-color: #fff;
+	background-color: #2C2C2C;
 	border-radius: 5px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
 	transition: all 0.3s ease;

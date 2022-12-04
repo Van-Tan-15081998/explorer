@@ -5,12 +5,12 @@
 		</div>
 		<div v-else>
 			<div>
-				<h3>Words</h3>
         <core-button
             :type="'icon-text'"
             :left-icon="'fa-solid fa-floppy-disk'"
             :text="'Thêm từ vựng'"
             @click="openModalAddWord"
+						class="btn-add-word"
         />
 				<div class="detail-content core_child_standard_sequence">
 					<div v-for="item in listWord" :key="item">
@@ -190,7 +190,10 @@
 <style scoped lang="scss">
 	.detail-content {
 		position: relative;
+		left: 0px;
+		top: 100px;
 		padding: 10px;
+		z-index: 2;
 
 		.paginate-block {
 			width: calc(100% - 300px);
@@ -206,5 +209,22 @@
 				box-shadow: #cccccc 3px 3px 5px 4px;
 			}
 		}
+	}
+	.word_page_background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: #1F1F1F;
+		background-image: url("../../assets/img/background-optimized-2.svg");
+		background-repeat: repeat;
+		background-size: 350px;
+		z-index: 1;
+	}
+
+	.btn-add-word {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 2;
 	}
 </style>

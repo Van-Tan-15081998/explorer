@@ -10,6 +10,8 @@
 								:type="'icon'"
 								:icon="'fa-solid fa-xmark'"
 								:padding="5"
+								:width="60"
+								:height="30"
 						/>
 					</div>
 

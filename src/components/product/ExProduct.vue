@@ -138,29 +138,150 @@
 				</div>
 			</div>
 		</div>
+
+
+<!--		conversation-->
 		<div class="knowledge_block">
 			<div class="part_left">
-
+				<div class="knowledge_image core_child_center">
+					<img src="https://live.staticflickr.com/65535/51494598937_e54f7c5cc7_b.jpg" alt="">
+				</div>
+				<div class="sub_menu">
+					<ul>
+						<li
+								@click="openTab(1)"
+								:class="{'selected': openTabIndex === 1}"
+								class="core_child_center">Gia thế</li>
+						<li
+								@click="openTab(2)"
+								:class="{'selected': openTabIndex === 2}"
+								class="core_child_center">Item 2</li>
+						<li
+								@click="openTab(3)"
+								:class="{'selected': openTabIndex === 3}"
+								class="core_child_center">Item 3</li>
+						<li
+								@click="openTab(4)"
+								:class="{'selected': openTabIndex === 4}"
+								class="core_child_center">Item 4</li>
+						<li
+								@click="openTab(5)"
+								:class="{'selected': openTabIndex === 5}"
+								class="core_child_center">Item 5</li>
+						<li
+								@click="openTab(6)"
+								:class="{'selected': openTabIndex === 6}"
+								class="core_child_center">Item 6</li>
+						<li
+								@click="openTab(7)"
+								:class="{'selected': openTabIndex === 7}"
+								class="core_child_center">Item 7</li>
+						<li
+								@click="openTab(8)"
+								:class="{'selected': openTabIndex === 8}"
+								class="core_child_center">Item 8</li>
+						<li
+								@click="openTab(9)"
+								:class="{'selected': openTabIndex === 9}"
+								class="core_child_center">Item 9</li>
+						<li
+								@click="openTab(10)"
+								:class="{'selected': openTabIndex === 10}"
+								class="core_child_center">Item 10</li>
+					</ul>
+				</div>
 			</div>
 			<div class="part_right">
+				<div class="content_item">
+					<div class="knowledge_label">
+						<p title="Hưng Đạo đại vương - Trần Quốc Tuấn - Đại tướng nhà Trần">
+							Trần Quốc Tuấn - Trần Quang Khải
+						</p>
+					</div>
+					<div class="detail_content">
 
-			</div>
-		</div>
-		<div class="knowledge_block">
-			<div class="part_left">
+						<div class="conversation_name_block">
+							<div class="situation_label core_child_center_right">
+								Bối cảnh
+							</div>
+							<div class="situation_content core_child_center ">
+								Có một hôm, Quốc Tuấn ở Vạn Kiếp về, Quang Khải cùng Quốc Tuấn đánh cờ chơi đùa suốt ngày. Quang Khải tính không hay tắm gội. Quốc Tuấn cởi áo và lau rửa giúp Quang Khải rồi nói
+							</div>
+						</div>
+						<div class="member_block">
+							<div class="member_label core_child_center_right">
+								Người tham gia
+							</div>
+							<div class="member_content core_child_center">
+								Trần Quốc Tuấn
+							</div>
+						</div>
+						<div class="member_block">
+							<div class="member_label core_child_center_right">
+								Người tham gia
+							</div>
+							<div class="member_content core_child_center">
+								Trần Quang Khải
+							</div>
+						</div>
 
-			</div>
-			<div class="part_right">
-
-			</div>
-		</div>
-		<div class="knowledge_block">
-			<div class="part_left">
-
-			</div>
-			<div class="part_right">
-				<div class="content">
-
+						<div class="text_content_block person_message_block">
+							<div v-if="openTabIndex === 1">
+								<div class="person_message left">
+									<div class="avatar">
+										<img src="https://live.staticflickr.com/65535/52479930747_bec6f52045_n.jpg" alt="">
+									</div>
+									<div class="message">
+										Hôm nay tôi được tắm cho thượng tướng
+									</div>
+								</div>
+								<div class="person_message right">
+									<div class="avatar">
+										<img src="https://live.staticflickr.com/65535/52480430516_9578b28e95_n.jpg" alt="">
+									</div>
+									<div class="message">
+										Hôm nay tôi được quốc công tắm rửa cho
+									</div>
+								</div>
+							</div>
+							<div
+									v-if="openTabIndex === 2">
+								<p>Content - Item 2</p>
+							</div>
+							<div
+									v-if="openTabIndex === 3">
+								<p>Content - Item 3</p>
+							</div>
+							<div
+									v-if="openTabIndex === 4">
+								<p>Content - Item 4</p>
+							</div>
+							<div
+									v-if="openTabIndex === 5">
+								<p>Content - Item 5</p>
+							</div>
+							<div
+									v-if="openTabIndex === 6">
+								<p>Content - Item 6</p>
+							</div>
+							<div
+									v-if="openTabIndex === 7">
+								<p>Content - Item 7</p>
+							</div>
+							<div
+									v-if="openTabIndex === 8">
+								<p>Content - Item 8</p>
+							</div>
+							<div
+									v-if="openTabIndex === 9">
+								<p>Content - Item 9</p>
+							</div>
+							<div
+									v-if="openTabIndex === 10">
+								<p>Content - Item 10</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -351,6 +472,41 @@
 				}
 			}
 
+			.conversation_name_block, .member_block {
+				display: inline-flex;
+				min-height: 30px;
+				width: 100%;
+				margin-bottom: 5px;
+
+				.situation_label, .member_label {
+					width: 150px;
+					height: auto;
+					border: 1px solid #555;
+					border-left: none;
+					color: lightgrey;
+					font-size: 15px;
+					padding-right: 20px;
+				}
+
+				.situation_content, .member_content {
+					height: auto;
+					padding: 0px 20px 0px 20px;
+					border: 1px solid #555;
+					border-left: none;
+					border-bottom-right-radius: 20px;
+					border-top-right-radius: 20px;
+					color: yellow;
+				}
+
+				.situation_content {
+					max-width: calc(100% - 150px);
+				}
+
+				.member_content {
+					width: fit-content;
+				}
+			}
+
 			.detail_content {
 				position: relative;
 				width: 100%;
@@ -370,6 +526,57 @@
 						line-height: 30px !important;
 					}
 				}
+
+				//start block message
+				.text_content_block.person_message_block {
+					background-color: transparent;
+				}
+			.person_message {
+				display: inline-flex;
+				width: 100%;
+				height: auto;
+				margin: 8px 0px 8px 0px;
+				flex-direction: row;
+				align-items: flex-start;
+
+				.avatar {
+					width: 35px;
+					height: 35px;
+					border-radius: 50%;
+					overflow: hidden;
+
+					img {
+						height: 100%;
+						width: 100%;
+					}
+				}
+
+				.message {
+					width: 75%;
+					padding: 8px;
+					margin: 0px 5px 5px 5px;
+
+					color: #555;
+					font-size: 16px;
+					line-height: 26px !important;
+					border-radius: 15px;
+				}
+
+				&.left {
+					justify-content: flex-start;
+					.message {
+						background-color: #F5F6CF;
+					}
+				}
+
+				&.right {
+					flex-direction: row-reverse;
+					.message {
+						background-color: #C2E79F;
+					}
+				}
+			}
+			//end block message
 			}
 		}
 	}
